@@ -16,18 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url, include
 from rest_framework import routers
-from NewsAPI.views import get_data
+from NewsAPI.views import get_data, UserViewSet, GroupViewSet
 
-# router = routers.DefaultRouter()
-# router.register(r'users', views.UserViewSet)
-# router.register(r'groups', views.GroupViewSet)
-# router.register(r'get_data', views.get_data)
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'groups', GroupViewSet)
+# router.register(r'get_data', get_data, 'test-data')
 
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    # url(r'^', include(router.urls)),
-    url(r'^', get_data),
+    url(r'^', include(router.urls)),
+    url(r'^test-data/', get_data),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
