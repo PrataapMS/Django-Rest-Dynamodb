@@ -1,6 +1,7 @@
 from NewsAPI.utils import rssfeed_parser
 
 if __name__ == "__main__":
+	url = ""
 	if len(sys.argv) == 2:
 		url = str(sys.argv[1])
 
